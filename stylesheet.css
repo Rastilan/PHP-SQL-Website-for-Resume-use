@@ -1,13 +1,13 @@
 ﻿body {
-        background-color: #212224;
-        	margin-left: 0; /* Ensures there is no space between sides of the screen and the menu */
+    background-color: #212224;
+    margin-left: 0; /* Ensures there is no space between sides of the screen and the menu */
     margin-top: 0; /* Ensures there is no space between sides of the screen and the menu */
     padding: 0;
 
 }
 #wrap	{
 	width: 100%; /* Spans the width of the page */
-    	height: 50px; 
+    height: 50px; 
 	margin-left: 0; /* Ensures there is no space between sides of the screen and the menu */
     margin-top: 0; /* Ensures there is no space between sides of the screen and the menu */
     padding: 0;
@@ -104,4 +104,64 @@ z-index: 99;
     margin-left: auto;
     margin-right: auto;
 
+}
+#recenttradesbackground { /* sets the backdrop for the recent_trades */
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #0a0a0a;
+    border: 1px solid #0a0a0a;
+    margin-bottom: 4px;
+    padding: 4px;
+    width: 940px;
+    height: 100px;
+}
+#recenttradesleftside {
+    position: relative;
+    box-sizing: border-box;
+    float: left;
+
+}
+#recenttradesimage {
+    width: 150px;
+    height: 100px;
+}
+#recenttradeitemdataname {
+    color: white;
+    display: inline-block;
+    vertical-align: top;
+
+}
+#recenttradeitemprice {
+    position: relative;
+    color: white;
+    vertical-align: middle;
+    right: 5px;
+    top: 30px;
+}
+#recenttrademakeofferimage {
+    position: relative;
+    top: 40px;
+    width: 130px;
+    height: 50px;
+    float: right;
+    vertical-align: middle;
+}
+#recenttradesrightside {
+    position: relative;
+    box-sizing: border-box;
+    float: right;
+    color: white;
+}
+
+#tradeoffercommentsbackground { /* sets the backdrop for the recent_trades */
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #0a0a0a;
+    border-top: 1px solid #2F2C2A;
+    border-bottom: 1px solid #252220;
+border-radius: 6px 6px 0px 0px;
+    margin-bottom: 4px;
+    padding: 4px;
+    width: 940px;
+    color: white;
 }

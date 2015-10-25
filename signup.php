@@ -1,54 +1,11 @@
 <?php
-require 'connections.php';
+require 'Includes/connections.php';
 ?>
 <html>
     <head><link rel="stylesheet" type="text/css" href="stylesheet.css" media="screen" /><title>Signup</title></head>
     <body>
-        <div id="wrap">
-		      <ul class="navbar">
-			     <li><a href="index.php">Trove Traders</a></li>
-			     <li><a href="#">Trading</a>
-				    <ul>
-				       <li><a href="#">....</a></li>
-				       <li><a href="#">....</a></li>
-				       <li><a href="#">....</a></li>
-				       <li><a href="#">....</a></li>
-				    </ul>         
-			     </li>
-			     <li><a href="#">Prices</a>
-				    <ul>
-				       <li><a href="#">....</a></li>
-				       <li><a href="#">....</a></li>
-				       <li><a href="#">....</a></li>
-				       <li><a href="#">....</a></li>
-				    </ul>         
-			     </li>
-			     <li><a href="#">Community</a>
-				    <ul>
-				       <li><a href="#">....</a></li>
-				       <li><a href="#">....</a></li>
-				       <li><a href="#">....</a></li>
-				       <li><a href="#">....</a></li>
-				    </ul>         
-			     </li>
-			     <li><a href="#">extra</a>
-				    <ul>
-				       <li><a href="#">....</a></li>
-				       <li><a href="#">....</a></li>
-				       <li><a href="#">....</a></li>
-				       <li><a href="#">....</a></li>
-				    </ul>         
-			     </li>
-			     <li><a href="#">extra</a>
-				    <ul>
-				       <li><a href="#">....</a></li>
-				       <li><a href="#">....</a></li>
-				       <li><a href="#">....</a></li>
-				       <li><a href="#">....</a></li>
-				    </ul>         
-			     </li>
-		      </ul>
-    </div>
+<!-- Top of page Navbar -->
+   <?php include 'navbar.php'; ?>
         <br />
         <br />
         <br />

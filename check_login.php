@@ -1,5 +1,5 @@
 <?php
-require 'connections.php';
+require 'Includes/connections.php';
 ?>
 
 

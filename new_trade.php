@@ -1,8 +1,7 @@
 <?php
-require 'connections.php';
+require 'Includes/connections.php';
 ?>
-
-                    <li><a href="#">...<?php
+<?php
 session_start();
 
 $result = $con->query("SELECT * FROM items");
@@ -55,24 +54,22 @@ else {
   <!-- Top of page Navbar -->
    <?php include 'navbar.php'; ?>
    
-    <?php
-    if(isset($_SESSION['id'])) {
-        echo ('<div id="signedin">Signed in as ' . $_SESSION["username"] . '</div>');
-        echo ('<div id="signedin"><br /><a href="logout.php">Sign Out</a></div>');
-    }
-    else {
-        echo ('<a href="login.php"> <img id="signin"  src="images/loginbutton.png"> </a>');
-    }
-        ?>
+   
         <br />
     <br />
         <br />
         <br />
-<form action="" method="post" id="formPost">
-    Item : <input type="text" placeholder="Item Name" id="itemNameAutoComplete" class="ui-autocomplete-input" autocomplete="off" name="itemNameAutoComplete"/>
+ <?php 
+ if(isset($_SESSION["username"])) {
+ echo '
+    <form action="" method="post" id="formPost">
+        Item : <input type="text" placeholder="Item Name" id="itemNameAutoComplete" class="ui-autocomplete-input" autocomplete="off" name="itemNameAutoComplete"/>
         <input type="submit" name="post" value="post">
-</form>
-
+    </form>
+    ';
+}
+else { echo 'You need to log in before you can make a trade!'; }
+?>
 
 
 
@@ -97,18 +94,8 @@ if (isset($_POST['post'])) {
 
 $con->close();
 if(isset($_POST['post'])){
-    if($itemRecPrice == 0){
-        echo '<br />' . 'You have selected ' . $itemSelected . ' Which has no recommended selling price. How much would you like to sell this item for?';
-        echo '<br />';
-        echo '<form action="" method="post" id="posttrade">';
-        echo 'Sell for: <input name="itemprice" type="text" id="itemprice">';
-        echo '<br />';
-        echo '<input type="submit" name="posttrade" value="Post Trade">
-        </form>';
-
-    }
-    else{
-        echo '<br />' . 'You have selected ' . $itemSelected . ' Which is recommeneded to be priced at ' . $itemRecPrice . ' flux. How much would you like to sell this item for?';
+    if(strlen($itemSelected) > 1 && $itemSelected == $itemName){
+        echo '<br />' . 'You have selected ' . $itemSelected . ' How much would you like to sell this item for?';
         echo '<br />';
         echo '<form action="" method="post" id="posttrade">';
         echo 'Sell for: <input name="itemprice" type="text" id="itemprice">';
@@ -116,25 +103,37 @@ if(isset($_POST['post'])){
         echo '<input type="submit" name="posttrade" value="Post Trade">
         </form>';
         
+
+    }
+    else{
+        echo "You didn't select anything!";
+        
     }
 }
 
 ?>
 
 <?php       
-
-require 'connections.php';
+require 'Includes/connections.php';
     if(isset($_POST['posttrade'])) {
             $fluxAmount = $_POST['itemprice'];
             if($fluxAmount > 1000000000){
                 echo $fluxAmount . " Thats a bit much.. dontcha think?";
             }
+            else if($fluxAmount < 1){
+            echo "We have giveaways elsewhere on the site! Go donate the item there!";
+            }
             else {
-
-    $username = $_SESSION["username"];
-    $itemID = $_SESSION['itemID'];
-
-    $sql = $con->query("INSERT INTO trades (username, datetime, itemid, fluxamount)Values('{$username}', NOW(), '{$itemID}', '{$fluxAmount}')");
+                if(isset($_SESSION["username"])) {
+                    $username = $_SESSION["username"];
+                        if(isset($_SESSION['itemID'])) {
+                            $itemID = $_SESSION['itemID'];
+                            $sql = $con->query("INSERT INTO trades (username, datetime, itemid, fluxamount)Values('{$username}', NOW(), '{$itemID}', '{$fluxAmount}')");
+                            }
+                            else { echo "Was an item not selected?"; }
+                    }
+                else { echo "Are you not logged in?"; }
+    
             }
     
           
